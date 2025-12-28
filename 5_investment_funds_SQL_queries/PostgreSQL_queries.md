@@ -1,39 +1,48 @@
-# Выборка данных (Запросы)
+# Fetching data (Queries)
 
 ![2023-01-10_00-09-14](https://user-images.githubusercontent.com/114194866/211474878-3c01071d-310b-486f-88c4-a732c94deb3d.png)
 
-В проекте нам нужно проанализировать данные о фондах и инвестициях и написать соответствующие запросы к базе.
+In this project, we need to analyze the data about funds and investments and write appropriate SQL queries to the database.
 
-### Содержание <br>
+### Summary contents <br>
 
-[1. Посчитаем, сколько компаний закрылось.](#T1) <br>
-[2. Отобразим количество привлечённых средств для новостных компаний США.](#T2) <br>
-[3. Найдем общую сумму сделок по покупке одних компаний другими в долларах.](#T3) <br>
-[4. Отобразим имя, фамилию и названия аккаунтов людей в твиттере, у которых названия аккаунтов начинаются на 'Silver'.](#T4) <br>
-[5. Выведите на экран всю информацию о людях, у которых названия аккаунтов в твиттере содержат подстроку 'money', а фамилия начинается на 'K'](#T5)<br>
-[6. Для каждой страны отобразим общую сумму привлечённых инвестиций, которые получили компании, зарегистрированные в этой стране.](#T6)<br>
-[7. Составим таблицу, в которую войдёт дата проведения раунда, а также минимальное и максимальное значения суммы инвестиций, привлечённых в эту дату.](#T7)<br>
-[8. Создадим поле с категориями. Отобразим все поля таблицы `fund` и новое поле с категориями.](#T8)<br>
-[9. Для каждой из категорий, назначенных в предыдущем задании, посчитаем округлённое среднее количество инвестиционных раундов, в которых фонд принимал участие.](#T9)<br>
-[10. Проанализируем, в каких странах находятся фонды, которые чаще всего инвестируют в стартапы.](#T10)<br>
-[11. Отобразим имя и фамилию всех сотрудников стартапов.](#T11)<br>
-[12. Для каждой компании найдем количество учебных заведений, которые окончили её сотрудники.](#T12)<br>
-[13. Составим список с уникальными названиями закрытых компаний, для которых первый раунд финансирования оказался последним.](#T13)<br>
-[14. Составим список уникальных номеров сотрудников, которые работают в компаниях, отобранных в предыдущем задании.](#T14)<br>
-[15. Составим таблицу, куда войдут уникальные пары с номерами сотрудников из предыдущей задачи и учебным заведением, которое окончил сотрудник.](#T15)<br>
-[16. Посчитаем количество учебных заведений для каждого сотрудника из предыдущего задания.](#T16)<br>
-[17. Дополним предыдущий запрос и выведем среднее число учебных заведений (всех, не только уникальных), которые окончили сотрудники разных компаний.](#T17)<br>
-[18. Напишем похожий запрос: выведем среднее число учебных заведений (всех, не только уникальных), которые окончили сотрудники Facebook.](#T18)<br>
-[19. Составим таблицу из полей: `name_of_fund` — название фонда; `name_of_company` — название компании; `amount` — сумма инвестиций, которую привлекла компания в раунде. ](#T19)<br>
-[20. Выгрузим таблицу, в которой будут такие поля: название компании-покупателя; сумма сделки; название компании, которую купили; сумма инвестиций, вложенных в купленную компанию; доля, которая отображает, во сколько раз сумма покупки превысила сумму вложенных в компанию инвестиций, округлённая до ближайшего целого числа.](#T20)<br>
-[21. Выгрузим таблицу, в которую войдут названия компаний из категории `social`, получившие финансирование с 2010 по 2013 год включительно.](#T21)<br>
-[22. Отберем данные по месяцам с 2010 по 2013 год, когда проходили инвестиционные раунды.](#T22)<br>
-[23. Составим сводную таблицу и выведем среднюю сумму инвестиций для стран, в которых есть стартапы, зарегистрированные в 2011, 2012 и 2013 годах.](#T23)<br>
+[1.    Let's count how many companies have closed.](#T1) <br>
+[2.    We will display the number of funds raised for U.S. news companies.](#T2) <br>
+[3.    Let's find the total amount of transactions for the purchase of some companies by others in USD.](#T3) <br>
+[4.    Let's display the first name, last name, and account names of people on Twitter whose account names begin with 'Silver'.
+](#T4) <br>
+[5.    Display all information about people whose twitter account names contain the substring 'money' and whose last name begins with 'K'](#T5)<br>
+[6.    For each country, we will display the total amount of attracted investments that companies registered in this country received.](#T6)<br>
+[7.    Let's make a table
+which will include the date of the round, as well as the minimum and maximum values of the amount of investment raised on this date.](#T7)<br>
+[8.    Let's create a field with categories. Display all fields of the `fund` table and a new field with categories.](#T8)<br>
+[9.    For each of the categories assigned in the previous task,
+Let's calculate the rounded average number of investment rounds in which the fund took part.](#T9)<br>
+[10.    Let's analyze in which countries the funds that most often invest in startups are located.](#T10)<br>
+[11.    We will display the first and last names of all startup employees.](#T11)<br>
+[12.    For each company we find the number of educational institutions,
+which its employees graduated from.](#T12)<br>
+[13.    Let's make a list with the unique names of closed companies for which the first round of financing was the last.](#T13)<br>
+[14.    Let's compile a list of unique numbers of employees who work in the companies selected in the previous task.](#T14)<br>
+[15.    Let's make a table
+which will include unique pairs with employee numbers from the previous task and the educational institution from which the employee graduated.](#T15)<br>
+[16.    Let's calculate the number of educational institutions for each employee from the previous task.](#T16)<br>
+[17.    Let's supplement the previous query and display the average number of educational institutions (all, not just unique ones),
+which employees of different companies graduated from.](#T17)<br>
+[18.    Let's write a similar query: we'll display the average number of educational institutions (all, not just unique ones) that Facebook employees graduated from.](#T18)<br>
+[19.    Let's make a table from the fields: `name_of_fund` - name of the fund; `name_of_company` — company name; `amount` - investment amount,
+which the company raised in the round. ](#T19)<br>
+[20.    Let's upload a table that will contain the following fields: name of the purchasing company; transaction amount; the name of the company that was purchased; the amount of investment made in the acquired company; a share that reflects how many times the purchase amount exceeded the amount of investments made in the company,
+rounded to the nearest whole number.](#T20)<br>
+[21.    Let's download a table that will include the names of companies from the `social` category that received funding from 2010 to 2013 inclusive.](#T21)<br>
+[22.    Let's select data for months from 2010 to 2013, when investment rounds took place.](#T22)<br>
+[23.
+   Let's create a summary table and display the average investment amount for countries that have startups registered in 2011, 2012 and 2013.](#T23)<br>
 
 <br><a name="T1"></a>
-#### 1. Посчитаем, сколько компаний закрылось.
+#### 1. Let's count how many companies have closed.
 
-Для того чтобы отобрать данные из таблицы используется SQL запрос следующей структуры:
+In order to select data from a table, an SQL query with the following structure is used:
 
 
 ```SQL
@@ -42,13 +51,13 @@ FROM company c
 WHERE c.status = 'closed';
 
 ```
-Результат: 
+Result: 
 | count | 
 |------   |  
 |2584|
 ___
 <a name="T2"></a>
-#### 2. Отобразим количество привлечённых средств для новостных компаний США. Используем данные из таблицы `company`. Отсортируем таблицу по убыванию значений в поле `funding_total` .
+#### 2. We will display the number of funds raised for US news companies. We use data from the `company` table. Let's sort the table in descending order of values ​​in the `funding_total` field.
 
 ```SQL
 SELECT to_char(CAST(c.funding_total AS numeric), '9999999999FM') AS funding_total
@@ -58,7 +67,7 @@ WHERE c.category_code = 'news'
 ORDER BY c.funding_total DESC;
 
 ```
-Результат: 
+Result: 
 | funding_total | 
 |------   |  
 |622553000||------   |  
@@ -70,7 +79,7 @@ ORDER BY c.funding_total DESC;
 |...|
 ___
 <a name="T3"></a>
-#### 3. Найдем общую сумму сделок по покупке одних компаний другими в долларах. Отберем сделки, которые осуществлялись только за наличные с 2011 по 2013 год включительно.
+#### 3. Let's find the total amount of transactions for the purchase of some companies by others in dollars. We will select transactions that were carried out only in cash from 2011 to 2013 inclusive.
 
 ```SQL
 SELECT SUM(a.price_amount)
@@ -82,7 +91,7 @@ WHERE a.term_code = 'cash'
                                           2013);
 
 ```
-Результат: 
+Result: 
 | sum | 
 |------   |  
 |1.37762e+11|
@@ -98,7 +107,7 @@ FROM people p
 WHERE p.twitter_username LIKE 'Silver%';
 
 ```
-Результат: 
+Result: 
 | first_name | last_name | twitter_username |
 |------   |  ------- |  ------|
 |Rebecca	| Silver| SilverRebecca|
@@ -115,7 +124,7 @@ WHERE p.twitter_username LIKE '%money%'
   AND p.last_name LIKE 'K%';
 
 ```
-Результат: 
+Result: 
 | id			| first_name | last_name | company_id | twitter_username | created_at | updated_at |
 |------   |  ------- |  ------|  ------|  ------|  ------|  ------|
 |63081	  | Gregory	| Kim | | gmoney75 | 2010-07-13 03:46:28| 2011-12-12 22:01:34|
@@ -130,7 +139,7 @@ GROUP BY c.country_code
 ORDER BY SUM(c.funding_total) DESC;
 
 ```
-Результат: 
+Result: 
 | country_code | sum |
 |------   |  ------- |
 |USA	  | 31058800000	|
@@ -160,7 +169,7 @@ HAVING MIN(fr.raised_amount) <> 0
 AND MIN(fr.raised_amount) <> MAX(fr.raised_amount);
 
 ```
-Результат: 
+Result: 
 | funded_at |	min |	max | 
 |------   |------   |------   |  
 | 2012-08-22 |	40000 |	7.5e+07 | 
@@ -192,7 +201,7 @@ SELECT *,
 FROM fund;
 
 ```
-Результат: 
+Result: 
 <table border="1">
 <thead>
 <tr><th>id</th><th> name</th><th> founded_at</th><th> domain</th><th> twitter_username</th><th> country_code</th><th> investment_rounds</th><th> invested_companies</th><th> milestones</th><th> created_at</th><th> updated_at</th><th> case</th></tr>
@@ -229,7 +238,7 @@ GROUP BY activity
 ORDER BY round ASC;
 
 ```
-Результат: 
+Result: 
 <table border="1">
 <thead>
 <tr><th>round</th><th>activity</th></tr>
@@ -260,7 +269,7 @@ ORDER BY AVG DESC, country_code ASC
 LIMIT 10;;
 
 ```
-Результат: 
+Result: 
 <table border="1">
 <thead>
 <tr><th>country_code</th><th>min</th><th>max</th><th>avg</th></tr>
@@ -289,7 +298,7 @@ FROM people p
 LEFT JOIN education ed ON p.id = ed.person_id;
 
 ```
-Результат: 
+Result: 
 <table border="1">
 <thead>
 <tr><th>first_name</th><th> last_name</th><th> instituition</th></tr>
@@ -325,7 +334,7 @@ ORDER BY instituition_qty DESC
 LIMIT 5;
 
 ```
-Результат: 
+Result: 
 <table border="1">
 <thead>
 <tr><th>name</th><th> instituition_qty</th></tr>
@@ -353,7 +362,7 @@ WHERE c.status = 'closed' AND c.id IN (
 );
 
 ```
-Результат: 
+Result: 
 <table border="1">
 <thead>
 <tr><th>name</th></tr>
@@ -393,7 +402,7 @@ WHERE p.company_id IN (
 );
 
 ```
-Результат: 
+Result: 
 <table border="1">
 <thead>
 <tr><th>id</th></tr>
@@ -428,7 +437,7 @@ WHERE p.company_id IN (
 );
 
 ```
-Результат: 
+Result: 
 <table border="1">
 <thead>
 <tr><th>id</th><th>instituition</th></tr>
@@ -467,7 +476,7 @@ WHERE p.company_id IN (
 GROUP BY p.id;
 
 ```
-Результат: 
+Result: 
 <table border="1">
 <thead>
 <tr><th>id</th><th>count</th></tr>
@@ -507,7 +516,7 @@ SELECT AVG(COUNT)
 FROM base;
 
 ```
-Результат: 
+Result: 
 <table border="1">
 <thead>
 <tr><th>avg</th></tr>
@@ -538,7 +547,7 @@ SELECT AVG(COUNT)
 FROM base;
 
 ```
-Результат: 
+Result: 
 <table border="1">
 <thead>
 <tr><th>avg</th></tr>
@@ -564,7 +573,7 @@ WHERE fr.funded_at BETWEEN '2012-01-01' AND '2013-12-31'
   AND c.milestones > 6;
 
 ```
-Результат: 
+Result: 
 <table border="1">
 <thead>
 <tr><th>name_of_fund</th><th> name_of_company</th><th> amount</th></tr>
@@ -605,7 +614,7 @@ ORDER BY buying_price DESC, acquisition
 LIMIT 10;
 
 ```
-Результат: 
+Result: 
 <table border="1">
 <thead>
 <tr><th>buyer</th><th> buying_price</th><th> acquisition</th><th> investment_sum</th><th> increase</th></tr>
@@ -640,7 +649,7 @@ WHERE c.category_code = 'social'
               FROM fr.funded_at::date) BETWEEN '2010' AND '2013';
 
 ```
-Результат: 
+Result: 
 <table border="1">
 <thead>
 <tr><th>name</th><th> date_part</th></tr>
@@ -694,7 +703,7 @@ FROM fundings fnd
 LEFT JOIN acquisitions ac ON fnd.funding_month = ac.funding_month;
 
 ```
-Результат: 
+Result: 
 <table border="1">
 <thead>
 <tr><th>funding_month</th><th>funds</th><th>purchased</th><th>sum_total</th></tr>
@@ -742,7 +751,7 @@ JOIN (
 ORDER BY y_11.y_2011 DESC;
 
 ```
-Результат: 
+Result: 
 <table border="1">
 <thead>
 <tr><th>country</th><th>y_2011</th><th>y_2012</th><th>y_2013</th></tr>
