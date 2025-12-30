@@ -16,27 +16,24 @@ In this project, we need to analyze the data about funds and investments and wri
 [8.    Creation of a field with categories. Display all fields of the `fund` table and a new field with categories.](#T8)<br>
 [9.    For each of the categories assigned in the previous task, calculate the rounded average number of investment rounds in which the fund took part.](#T9)<br>
 [10.   Analyze in which countries the funds that most often invest in startups are located.](#T10)<br>
-[11.    We will display the first and last names of all startup employees.](#T11)<br>
-[12.    For each company we find the number of educational institutions, which its employees graduated from.](#T12)<br>
-[13.    Let's make a list with the unique names of closed companies for which the first round of financing was the last.](#T13)<br>
-[14.    Let's compile a list of unique numbers of employees who work in the companies selected in the previous task.](#T14)<br>
-[15.    Let's make a table
-which will include unique pairs with employee numbers from the previous task and the educational institution from which the employee graduated.](#T15)<br>
-[16.    Let's calculate the number of educational institutions for each employee from the previous task.](#T16)<br>
-[17.    Let's supplement the previous query and display the average number of educational institutions (all, not just unique ones),
+[11.   Display the first and last names of all startup employees.](#T11)<br>
+[12.   For each company find the number of educational institutions, which its employees graduated from.](#T12)<br>
+[13.   Make a list with the unique names of closed companies for which the first round of financing was the last.](#T13)<br>
+[14.   Compile a list of unique numbers of employees who work in the companies selected in the previous task.](#T14)<br>
+[15.   Make a table which will include unique pairs with employee numbers from the previous task and the educational institution from which the employee graduated.](#T15)<br>
+[16.   Calculate the number of educational institutions for each employee from the previous task.](#T16)<br>
+[17.   Supplement the previous query and display the average number of educational institutions (all, not just unique ones),
 which employees of different companies graduated from.](#T17)<br>
-[18.    Let's write a similar query: we'll display the average number of educational institutions (all, not just unique ones) that Facebook employees graduated from.](#T18)<br>
-[19.    Let's make a table from the fields: `name_of_fund` - name of the fund; `name_of_company` — company name; `amount` - investment amount,
+[18.   Write a similar query: we'll display the average number of educational institutions (all, not just unique ones) that Facebook employees graduated from.](#T18)<br>
+[19.   Make a table from the fields: `name_of_fund` - name of the fund; `name_of_company` — company name; `amount` - investment amount,
 which the company raised in the round. ](#T19)<br>
-[20.    Let's upload a table that will contain the following fields: name of the purchasing company; transaction amount; the name of the company that was purchased; the amount of investment made in the acquired company; a share that reflects how many times the purchase amount exceeded the amount of investments made in the company,
-rounded to the nearest whole number.](#T20)<br>
-[21.    Let's download a table that will include the names of companies from the `social` category that received funding from 2010 to 2013 inclusive.](#T21)<br>
-[22.    Let's select data for months from 2010 to 2013, when investment rounds took place.](#T22)<br>
-[23.
-   Let's create a summary table and display the average investment amount for countries that have startups registered in 2011, 2012 and 2013.](#T23)<br>
+[20.   Upload a table that will contain the following fields: name of the purchasing company; transaction amount; the name of the company that was purchased; the amount of investment made in the acquired company; a share that reflects how many times the purchase amount exceeded the amount of investments made in the company, rounded to the nearest whole number.](#T20)<br>
+[21.   Download a table that will include the names of companies from the `social` category that received funding from 2010 to 2013 inclusive.](#T21)<br>
+[22.   Select data for months from 2010 to 2013, when investment rounds took place.](#T22)<br>
+[23.   Create a summary table and display the average investment amount for countries that have startups registered in 2011, 2012 and 2013.](#T23)<br>
 
 <br><a name="T1"></a>
-#### 1. Let's count how many companies have closed.
+#### 1. Count how many companies have closed.
 
 In order to select data from a table, an SQL query with the following structure is used:
 
@@ -111,7 +108,7 @@ Result:
 |Mattias	|Guilotte| Silverreven|
 ___
 <a name="T5"></a>
-#### 5. Выведем на экран всю информацию о людях, у которых названия аккаунтов в твиттере содержат подстроку 'money', а фамилия начинается на 'K'.
+#### 5. Display all the information about people whose Twitter account names contain the substring 'money' and whose last name begins with 'K'.
 
 ```SQL
 SELECT *
@@ -126,7 +123,7 @@ Result:
 |63081	  | Gregory	| Kim | | gmoney75 | 2010-07-13 03:46:28| 2011-12-12 22:01:34|
 ___
 <a name="T6"></a>
-#### 6. Для каждой страны отобразим общую сумму привлечённых инвестиций, которые получили компании, зарегистрированные в этой стране. Страну, в которой зарегистрирована компания, можно определить по коду страны. Отсортируем данные по убыванию суммы.
+#### 6. For each country, we will display the total amount of attracted investments received by companies registered in this country. The country in which the company is registered can be determined by the country code. Let's sort the data in descending order of amount.
 ```SQL
 SELECT c.country_code,
        SUM(c.funding_total)
@@ -152,8 +149,8 @@ Result:
 
 ___
 <a name="T7"></a>
-#### 7. Составим таблицу, в которую войдёт дата проведения раунда, а также минимальное и максимальное значения суммы инвестиций, привлечённых в эту дату.
-Оставим в итоговой таблице только те записи, в которых минимальное значение суммы инвестиций не равно нулю и не равно максимальному значению.
+#### 7. Create a table that will include the date of the round, as well as the minimum and maximum values ​​of the amount of investment raised on this date.
+Let us leave in the final table only those records in which the minimum value of the investment amount is not equal to zero and not equal to the maximum value.
 
 ```SQL
 SELECT fr.funded_at,
@@ -183,7 +180,7 @@ ___
 
 <a name="T8"></a>
 
-#### 8. Создадим поле с категориями: Для фондов, которые инвестируют в 100 и более компаний, категорию `high_activity`. Для фондов, которые инвестируют в 20 и более компаний до 100, категорию `middle_activity`. Если количество инвестируемых компаний фонда не достигает 20 - `low_activity`. Отобразим все поля таблицы `fund` и новое поле с категориями.
+#### 8. Create a field with categories: For funds that invest in 100 or more companies, the `high_activity` category. For funds that invest in 20 or more companies up to 100, the category is `middle_activity`. If the number of invested fund companies does not reach 20 - `low_activity`. Let's display all the fields of the `fund` table and a new field with categories.
 
 ```SQL
 SELECT *,
@@ -191,7 +188,7 @@ SELECT *,
            WHEN invested_companies > 100 THEN 'high_activity'
            WHEN invested_companies >= 20
                 AND invested_companies < 100 THEN 'middle_activity'
-           WHEN invested_companies < 20 THEN 'low_activity'-- сюда запишите условия
+           WHEN invested_companies < 20 THEN 'low_activity' 
 
        END
 FROM fund;
@@ -220,7 +217,7 @@ Result:
 
 <a name="T9"></a>
 
-#### 9. Для каждой из категорий, назначенных в предыдущем задании, посчитаем округлённое до ближайшего целого числа среднее количество инвестиционных раундов, в которых фонд принимал участие. Выведем на экран категории и среднее число инвестиционных раундов. Отсортируем таблицу по возрастанию среднего.
+#### 9. For each of the categories assigned in the previous task, we calculate the average number of investment rounds in which the fund took part, rounded to the nearest whole number. Let's display the categories and the average number of investment rounds. Let's sort the table in ascending order of average.
 
 ```SQL
 SELECT ROUND(AVG(f.investment_rounds)),
@@ -249,7 +246,7 @@ Result:
 
 <a name="T10"></a>
 
-#### 10. Проанализируем, в каких странах находятся фонды, которые чаще всего инвестируют в стартапы. Для каждой страны посчитаем минимальное, максимальное и среднее число компаний, в которые инвестировали фонды этой страны, основанные с 2010 по 2012 год включительно. Исключим страны с фондами, у которых минимальное число компаний, получивших инвестиции, равно нулю. Выгрузите десять самых активных стран-инвесторов. Отсортируем таблицу по среднему количеству компаний от большего к меньшему, а затем по коду страны в лексикографическом порядке.
+#### 10. We analyze further in which countries the funds that most often invest in startups are located. For each country, we will calculate the minimum, maximum and average number of companies in which the funds of that country, founded from 2010 to 2012 inclusive, have invested. Let's exclude countries with funds that have a minimum number of companies that received investments, equals zero. Unload the ten most active investing countries. Let's sort the table by the average number of companies from largest to smallest, and then by country code in lexicographic order.
 
 ```SQL
 SELECT country_code,
@@ -286,7 +283,7 @@ Result:
 <hr>
 
 <a name="T11"></a>
-#### 11. Отобразим имя и фамилию всех сотрудников стартапов. Добавим поле с названием учебного заведения, которое окончил сотрудник, если эта информация известна.
+#### 11. We will display the first and last names of all startup employees. We will add a field with the name of the educational institution from which the employee graduated, if this information is known.
 
 ```SQL
 SELECT first_name, last_name, instituition
@@ -317,7 +314,7 @@ Result:
 
 <a name="T12"></a>
 
-#### 12. Для каждой компании найдем количество учебных заведений, которые окончили её сотрудники. Выведем название компании и число уникальных названий учебных заведений. Составим топ-5 компаний по количеству университетов.
+#### 12. For each company, we find the number of educational institutions that its employees graduated from. We will display the company name and the number of unique names of educational institutions. Let's list the top 5 companies by number of universities.
 
 ```SQL
 SELECT c.name,
@@ -346,7 +343,7 @@ Result:
 <hr>
 
 <a name="T13"></a>
-#### 13. Составим список с уникальными названиями закрытых компаний, для которых первый раунд финансирования оказался последним.
+#### 13. We make a list with the unique names of closed companies for which the first round of financing was the last.
 
 ```SQL
 SELECT DISTINCT c.name
@@ -385,7 +382,7 @@ Result:
 
 <a name="T14"></a>
 
-#### 14. Составим список уникальных номеров сотрудников, которые работают в компаниях, отобранных в предыдущем задании.
+#### 14. Compile a list of unique numbers of employees who work in the companies selected in the previous task.
 
 ```SQL
 SELECT DISTINCT p.id
@@ -419,7 +416,7 @@ Result:
 
 <a name="T15"></a>
 
-#### 15. Составим таблицу, куда войдут уникальные пары с номерами сотрудников из предыдущей задачи и учебным заведением, которое окончил сотрудник.
+#### 15. Create a table that will include unique pairs with employee numbers from the previous task and the educational institution from which the employee graduated.
 
 ```SQL
 SELECT DISTINCT p.id, e.instituition
@@ -457,7 +454,7 @@ Result:
 
 <a name="T16"></a>
 
-#### 16. Посчитаем количество учебных заведений для каждого сотрудника из предыдущего задания. При подсчёте учитываем, что некоторые сотрудники могли окончить одно и то же заведение дважды.
+#### 16. Let's calculate the number of educational institutions for each employee from the previous task. When calculating, we take into account that some employees could graduate from the same institution twice.
 
 ```SQL
 SELECT DISTINCT p.id, COUNT(e.instituition)
@@ -494,7 +491,7 @@ Result:
 
 <a name="T17"></a>
 
-#### 17. Дополним предыдущий запрос и выведем среднее число учебных заведений (всех, не только уникальных), которые окончили сотрудники разных компаний.
+#### 17. We will supplement the previous query and display the average number of educational institutions (all, not just unique ones) that employees of different companies graduated from.
 
 ```SQL
 WITH base as (
@@ -525,7 +522,7 @@ Result:
 
 <a name="T18"></a>
 
-#### 18. Напишем похожий запрос: выведем среднее число учебных заведений (всех, не только уникальных), которые окончили сотрудники Facebook.
+#### 18. Do a similar query: display the average number of educational institutions (all, not just unique ones) that Facebook employees graduated from.
 
 ```SQL
 WITH base as (
@@ -555,7 +552,7 @@ Result:
 <hr>
 
 <br><a name="T19"></a>
-#### 19. Составим таблицу из полей: `name_of_fund` — название фонда; `name_of_company` — название компании; `amount` — сумма инвестиций, которую привлекла компания в раунде. В таблицу войдут данные о компаниях, в истории которых было больше шести важных этапов, а раунды финансирования проходили с 2012 по 2013 год включительно.
+#### 19. Make a table from the fields: `name_of_fund` - name of the fund; `name_of_company` — company name; `amount` - the amount of investment that the company attracted in the round. The table will include data on companies whose history had more than six important stages, and funding rounds took place from 2012 to 2013 inclusive.
 
 ```SQL
 SELECT f.name AS name_of_fund,
@@ -590,7 +587,7 @@ Result:
 
 
 <br><a name="T20"></a>
-#### 20. Выгрузим таблицу, в которой будут такие поля: название компании-покупателя; сумма сделки; название компании, которую купили; сумма инвестиций, вложенных в купленную компанию; доля, которая отображает, во сколько раз сумма покупки превысила сумму вложенных в компанию инвестиций, округлённая до ближайшего целого числа. Не учитывая те сделки, в которых сумма покупки равна нулю. Если сумма инвестиций в компанию равна нулю, исключим такую компанию из таблицы. Отсортируем таблицу по сумме сделки от большей к меньшей, а затем по названию купленной компании в лексикографическом порядке. Ограничим таблицу первыми десятью записями.
+#### 20. Show a table that will contain the following fields: name of the purchasing company; transaction amount; the name of the company that was purchased; the amount of investment made in the purchased company; a share that reflects how many times the purchase amount exceeded the amount of investment made in the company, rounded to the nearest whole number. Without considering those deals, in which the purchase amount is zero. If the amount of investment in a company is zero, we will exclude such a company from the table. Let's sort the table by transaction amount from highest to lowest, and then by the name of the purchased company in lexicographic order. Let's limit the table to the first ten records.
 
 ```SQL
 SELECT acqn.buyer, acqn.buying_price, acqd.acquisition, acqd.investment_sum, ROUND(acqn.buying_price / acqd.investment_sum) increase
@@ -631,7 +628,7 @@ Result:
 <hr>
 
 <br><a name="T21"></a>
-#### 21. Выгрузим таблицу, в которую войдут названия компаний из категории `social`, получившие финансирование с 2010 по 2013 год включительно. Проверим, что сумма инвестиций не равна нулю. Выведем также номер месяца, в котором проходил раунд финансирования.
+#### 21. Display a table that will include the names of companies from the `social` category that received funding from 2010 to 2013 inclusive. Let's check that the investment amount is not zero. We will also display the number of the month in which the funding round took place.
 
 ```SQL
 SELECT c.name,
@@ -668,7 +665,7 @@ Result:
 <hr>
 
 <br><a name="T22"></a>
-#### 22. Отберем данные по месяцам с 2010 по 2013 год, когда проходили инвестиционные раунды. Сгруппируем данные по номеру месяца и получим таблицу, в которой будут поля: номер месяца, в котором проходили раунды; количество уникальных названий фондов из США, которые инвестировали в этом месяце; количество компаний, купленных за этот месяц; общая сумма сделок по покупкам в этом месяце.
+#### 22. We will select data for months from 2010 to 2013, when investment rounds took place. Let's group the data by month number and get a table that will contain the fields: number of the month in which the rounds took place; number of unique US fund names that invested this month; number of companies purchased this month; the total amount of purchase transactions this month.
 
 ```SQL
 WITH fundings AS
@@ -719,7 +716,7 @@ Result:
 <hr>
 
 <br><a name="T23"></a>
-#### 23. Составим сводную таблицу и выведем среднюю сумму инвестиций для стран, в которых есть стартапы, зарегистрированные в 2011, 2012 и 2013 годах. Данные за каждый год должны быть в отдельном поле. Отсортируем таблицу по среднему значению инвестиций за 2011 год от большего к меньшему.
+#### 23. Afterwards, we create a summary table and display the average investment amount for countries that have startups registered in 2011, 2012 and 2013. Data for each year should be in a separate field. Let's sort the table by the average investment value for 2011 from largest to smallest.
 
 ```SQL
 SELECT y_11.country, Y_2011, Y_2012, Y_2013
