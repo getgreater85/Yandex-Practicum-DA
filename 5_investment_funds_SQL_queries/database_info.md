@@ -1,13 +1,6 @@
 In the project we will work with a database that stores information about venture funds and investments in startup companies. This database is based on the Startup Investments dataset published on the popular data mining competition platform Kaggle. 
 Analyzing the investment market without preparation can be difficult. Therefore, first we will get acquainted with the important concepts that we will encounter when working with a database.
 
-- **Venture funds** are financial organizations that can afford high risk and invest in companies with an innovative business idea or developed new technology, that is, in startups. The goal of venture funds is to receive significant profits in the future, which will be many times greater than the amount they spend on investing in the company. If the startup rises in price, the venture fund may receive a stake in the company or a fixed percentage of its revenue. 
-- To make the financing process less risky, it is divided into stages - **rounds**. This or that round depends on what level of development the company has reached. 
-- The first stages are **pre-seed** and **seed rounds**. A pre-seed round assumes that the company as such has not yet been created and is in the concept stage. The next seed round marks the growth of the project: the company’s founders are developing a business model and attracting investors. 
-- If a company needs a mentor or coach, it attracts a business angel. **Business angels** - investors, who offer expert assistance in addition to financial support. This round is called an angel round. 
-- When a startup becomes a company with a proven business model and begins to earn money on its own, there are more investor offers. This is round A, and others follow: B, C, D — at these stages the company is actively developing and preparing for an IPO. 
-- Sometimes a **venture round** is allocated - financing that could come from a venture fund at any stage: initial or later.
-
 In the investment data we will come across references to rounds, but the project does not assume that we should understand their specifics better than any investor. The main thing is to understand how the data is structured. 
 We already know what an ER diagram is. It's best to start working with a new database by studying the schema.
 
