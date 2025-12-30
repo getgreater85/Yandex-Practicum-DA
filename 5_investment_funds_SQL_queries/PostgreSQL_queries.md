@@ -6,22 +6,18 @@ In this project, we need to analyze the data about funds and investments and wri
 
 ### Summary contents <br>
 
-[1.    Let's count how many companies have closed.](#T1) <br>
-[2.    We will display the number of funds raised for U.S. news companies.](#T2) <br>
-[3.    Let's find the total amount of transactions for the purchase of some companies by others in USD.](#T3) <br>
-[4.    Let's display the first name, last name, and account names of people on Twitter whose account names begin with 'Silver'.
-](#T4) <br>
+[1.    Count how many companies have closed.](#T1) <br>
+[2.    Display the number of funds raised for U.S. news companies.](#T2) <br>
+[3.    Find the total amount of transactions for the purchase of some companies by others in USD.](#T3) <br>
+[4.    Show the first name, last name, and account names of people on Twitter whose account names begin with 'Silver'.](#T4) <br>
 [5.    Display all information about people whose twitter account names contain the substring 'money' and whose last name begins with 'K'](#T5)<br>
-[6.    For each country, we will display the total amount of attracted investments that companies registered in this country received.](#T6)<br>
-[7.    Let's make a table
-which will include the date of the round, as well as the minimum and maximum values of the amount of investment raised on this date.](#T7)<br>
-[8.    Let's create a field with categories. Display all fields of the `fund` table and a new field with categories.](#T8)<br>
-[9.    For each of the categories assigned in the previous task,
-Let's calculate the rounded average number of investment rounds in which the fund took part.](#T9)<br>
-[10.    Let's analyze in which countries the funds that most often invest in startups are located.](#T10)<br>
+[6.    For each country, display the total amount of attracted investments that companies registered in such country received.](#T6)<br>
+[7.    Create a table which will include the date of the round, as well as the minimum and maximum values of the amount of investment funds raised on this date.](#T7)<br>
+[8.    Creation of a field with categories. Display all fields of the `fund` table and a new field with categories.](#T8)<br>
+[9.    For each of the categories assigned in the previous task, calculate the rounded average number of investment rounds in which the fund took part.](#T9)<br>
+[10.   Analyze in which countries the funds that most often invest in startups are located.](#T10)<br>
 [11.    We will display the first and last names of all startup employees.](#T11)<br>
-[12.    For each company we find the number of educational institutions,
-which its employees graduated from.](#T12)<br>
+[12.    For each company we find the number of educational institutions, which its employees graduated from.](#T12)<br>
 [13.    Let's make a list with the unique names of closed companies for which the first round of financing was the last.](#T13)<br>
 [14.    Let's compile a list of unique numbers of employees who work in the companies selected in the previous task.](#T14)<br>
 [15.    Let's make a table
@@ -79,7 +75,7 @@ Result:
 |...|
 ___
 <a name="T3"></a>
-#### 3. Let's find the total amount of transactions for the purchase of some companies by others in dollars. We will select transactions that were carried out only in cash from 2011 to 2013 inclusive.
+#### 3. Next, we find the total amount of transactions for the purchase of some companies by others in dollars. We will select transactions that were carried out only in cash from 2011 to 2013 inclusive.
 
 ```SQL
 SELECT SUM(a.price_amount)
@@ -97,7 +93,7 @@ Result:
 |1.37762e+11|
 ___
 <a name="T4"></a>
-#### 4. Отобразим имя, фамилию и названия аккаунтов людей в твиттере, у которых названия аккаунтов начинаются на 'Silver'.
+#### 4. We display the first name, last name, and account names of people on Twitter whose account names begin with 'Silver'.
 
 ```SQL
 SELECT p.first_name,
